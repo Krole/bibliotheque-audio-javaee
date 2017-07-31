@@ -4,48 +4,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity (name ="maisons_de_disque")
-public class MaisonDeDisque {
-	
+
+@Entity
+public class MaisonDeDisque
+{
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int id;
-	
-	@OneToMany (mappedBy = "maison", fetch = FetchType.LAZY)
+
+	@OneToMany( mappedBy = "maison" )
 	private List<Auteur> auteurs = new ArrayList<>();
-	
+
 	private String nom;
 
-	public List<Auteur> getAuteurs() {
-		return auteurs;
-	}
-	
-	public void addAuteurs (Auteur auteur){
-		auteurs.add(auteur);
-	}
-
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId( int id )
+	{
 		this.id = id;
 	}
 
-	public String getNom() {
+	public String getNom()
+	{
 		return nom;
 	}
 
-	public void setNom(String nom) {
+	public void setNom( String nom )
+	{
 		this.nom = nom;
 	}
-	
-	
+
+	public List<Auteur> getAuteurs()
+	{
+		return auteurs;
+	}
+
+	public void addAuteur( Auteur auteur )
+	{
+		auteurs.add( auteur );
+	}
 
 }
